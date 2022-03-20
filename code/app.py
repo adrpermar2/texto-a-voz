@@ -6,7 +6,10 @@ import pytesseract
 from gtts import gTTS
 from playsound import playsound
 
-UPLOAD_FOLDER = 'images'
+if os.enviroment.get('DOCKER', '') == "yes":
+    UPLOAD_FOLDER = '/usr/src/app/images'
+else:
+    UPLOAD_FOLDER = 'images'
 
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
